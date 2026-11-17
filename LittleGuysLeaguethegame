@@ -1,0 +1,369 @@
+PROJETO: LITTLE GUYS LEAGUE
+
+Instruções principais para desenvolvimento do jogo
+
+Você será o desenvolvedor principal do projeto Little Guys League. Sua missão é transformar os arquivos existentes em um jogo 2D completo, jogável e funcional no navegador.
+
+Não crie apenas uma demonstração visual ou protótipo de menus. Desenvolva as mecânicas reais, movimentação, física, inteligência artificial, colisões, modalidades, pontuação e sistemas de jogo.
+
+1. ANTES DE PROGRAMAR
+
+Primeiro:
+
+1. Analise todos os arquivos e pastas existentes no projeto.
+2. Identifique a tecnologia, estrutura e recursos já implementados.
+3. Examine os SVGs dos personagens e outros recursos visuais.
+4. Preserve os arquivos e funcionalidades que já existem e que podem ser aproveitados.
+5. Não apague ou substitua recursos sem necessidade.
+6. Organize um plano de implementação.
+7. Comece a desenvolver depois da análise, sem ficar apenas apresentando planos.
+
+Se encontrar problemas no código existente, corrija-os com cuidado.
+
+2. PLATAFORMA E VISÃO
+
+A primeira versão será exclusivamente para navegador.
+
+- Jogo 2D com visão de cima (Top-down).
+- Cenário fixo: uma quadra/arena.
+- Não criar mapas diferentes para cada modalidade.
+- O que muda entre as partidas são as regras, desafios, objetos, eventos e mecânicas.
+- Movimentação em oito direções.
+- Física, colisões e empurrões funcionais.
+- Interface adaptável ao navegador.
+- Preparar o código para futuras versões em outras plataformas, mas não desenvolver essas versões agora.
+
+3. PERSONAGENS
+
+Existem exatamente sete personagens:
+
+- Vermelho
+- Azul
+- Amarelo
+- Rosa
+- Roxo
+- Laranja
+- Verde
+
+Aparência 2D:
+
+- Corpos circulares e simples.
+- Contorno escuro fino.
+- Sem braços, pernas ou nariz.
+- Dois olhos ovais brancos juntos no centro do rosto.
+- Pupilas pretas.
+- A maioria não possui boca.
+- Verde possui sorriso aberto fixo.
+- Vermelho possui um pequeno sorriso de lado confiante.
+
+Utilize os SVGs existentes sempre que possível. Não substitua os desenhos originais por personagens genéricos.
+
+4. PERSONALIDADES E PODERES
+
+Vermelho
+
+- Poder: tapa/empurrão forte.
+- Confiante e competitivo.
+- Possui um sorrisinho de lado fixo.
+
+Azul
+
+- Poder: congelar adversários dentro de um cubo de gelo.
+- Personalidade fria, focada em vencer.
+
+Amarelo
+
+- Poder: Dash instantâneo.
+- Arrancada rápida, direta e sem carregamento.
+- Não produzir uma onda pesada de efeitos visuais.
+
+Rosa
+
+- Poder: criar clones de si mesmo.
+- Mais empático e expressivo.
+
+Roxo
+
+- Poder: telecinese.
+- Pode flutuar e puxar objetos de longe.
+
+Laranja
+
+- Não é agressivo por natureza.
+- Competitivo, ágil e arisco.
+- Utiliza esquivas rápidas e reflexos.
+- Seu impulso tem uma breve preparação, percorre uma distância menor e produz uma onda visual de ar/poeira.
+- É diferente do Dash instantâneo do Amarelo.
+
+Verde
+
+- Não possui superpoder ativo.
+- Utiliza movimentação normal.
+- Possui sorriso aberto fixo.
+
+Os poderes precisam funcionar de verdade e respeitar as características de cada personagem.
+
+5. DISTRIBUIÇÃO DOS PERSONAGENS
+
+Cada partida terá sete competidores.
+
+- Personagens sorteados aleatoriamente.
+- Nenhum personagem pode aparecer duas vezes na mesma partida.
+- Humanos e IAs participam do mesmo sorteio.
+- Não permitir escolha manual de personagem nesta primeira versão.
+- Todos os personagens disponíveis podem ser sorteados.
+
+6. MODOS DE PARTICIPANTES
+
+A tela inicial deve permitir escolher:
+
+Só IA
+
+- Todos os sete competidores são controlados pela inteligência artificial.
+
+Um jogador
+
+- Uma pessoa controla um personagem.
+- Os outros seis são controlados pela IA.
+- Todos competem individualmente, sem equipes.
+
+Dois jogadores
+
+- Duas pessoas jogam no mesmo teclado.
+- Cinco competidores restantes são controlados pela IA.
+- Cada jogador controla seu próprio personagem.
+
+Controles:
+
+- Jogador 1: WASD.
+- Jogador 2: setas direcionais.
+- Os dois jogadores precisam conseguir movimentar-se simultaneamente.
+- Não implementar joystick virtual ou controles de celular nesta versão.
+
+7. MODALIDADES
+
+Os jogadores devem poder escolher a modalidade antes de começar a partida.
+
+Não confundir o modo de participantes com a modalidade. São duas seleções diferentes.
+
+7.1 Jogo dos Cones
+
+- Cinco cones espalhados pela quadra.
+- Cada competidor possui uma base própria.
+- O objetivo é reunir três cones na própria base.
+- Roubar cones das bases adversárias é permitido.
+- O primeiro a reunir três cones vence.
+- Implementar movimentação, coleta, transporte e roubo funcional dos cones.
+
+7.2 Rei da Montanha
+
+- Existe um círculo central iluminado.
+- Os competidores precisam permanecer dentro dele para acumular pontos.
+- Os adversários podem tentar empurrar os concorrentes para fora.
+- O sistema de pontuação precisa funcionar.
+
+7.3 Dança das Cadeiras
+
+- Os competidores circulam ao redor das cadeiras.
+- Quando a música para, precisam tentar sentar.
+- Quem não conseguir uma cadeira é eliminado.
+- Repetir as rodadas até existir um vencedor.
+
+7.4 Batata Quente
+
+- A batata é, na verdade, uma bomba.
+- A bomba passa entre os competidores.
+- Existe um temporizador.
+- Quando o tempo termina, a bomba explode.
+- Quem estiver segurando a bomba no momento da explosão é eliminado.
+- A partida continua até existir um vencedor.
+
+7.5 Queimada
+
+- Utilizar uma bola.
+- Os competidores tentam acertar os adversários.
+- Quem for atingido é eliminado conforme as regras da modalidade.
+- Permitir desviar, movimentar e lançar a bola.
+
+7.6 Batatinha Frita 1, 2, 3
+
+- Os competidores avançam enquanto o árbitro permite.
+- Quando o árbitro mandar parar, todos precisam interromper completamente a movimentação.
+- Quem continuar se movimentando pode ser eliminado.
+- Vence quem alcançar o objetivo sem ser eliminado.
+
+7.7 Shrink Circle (Círculo que Encolhe)
+
+- Todos os sete competidores começam dentro de um círculo.
+- O círculo diminui progressivamente.
+- Todos competem contra todos.
+- É permitido empurrar os adversários para fora.
+- Quem sair do círculo é eliminado.
+- Vence o último competidor que permanecer dentro.
+
+8. VARIAÇÕES ESPECIAIS
+
+Implementar opções que alteram as regras das partidas:
+
+No Powers
+
+- Todos os poderes especiais ficam desligados.
+- Os competidores disputam usando apenas movimentação e física normal.
+
+Every Power at Once
+
+- Todos os cinco poderes oficiais ficam disponíveis simultaneamente:
+  - Tapa do Vermelho.
+  - Congelamento do Azul.
+  - Dash do Amarelo.
+  - Clones do Rosa.
+  - Levitação do Roxo.
+- Os poderes precisam funcionar juntos sem quebrar a partida.
+
+Stealing Allowed
+
+- Permitir roubo de cones no Jogo dos Cones.
+
+9. ÁRBITRO E SISTEMA DE TEMPORADAS
+
+Criar um sistema de Árbitro (Referee).
+
+Ele pode:
+
+- Apresentar as regras antes das partidas.
+- Definir condições de classificação.
+- Controlar o número de vitórias necessárias para chegar à final.
+- Pausar a partida antes de determinados eventos.
+- Apresentar replays de partidas anteriores.
+
+O sistema de replay deve permitir rever acontecimentos e partidas anteriores.
+
+Deixar a estrutura preparada para incluir pistas e falhas da história nos replays no futuro.
+
+10. PONTUAÇÃO E COROA
+
+Criar um sistema de pontuação da liga.
+
+- Registrar vitórias e resultados.
+- Manter um placar dos competidores.
+- Identificar quem está liderando.
+- O competidor que estiver em primeiro lugar recebe uma coroa dourada flutuando acima da cabeça.
+- Atualizar a coroa quando a liderança mudar.
+
+11. INTELIGÊNCIA ARTIFICIAL
+
+A IA precisa ser funcional, não apenas personagens andando aleatoriamente.
+
+Cada competidor controlado pela IA deve:
+
+- Entender o objetivo da modalidade.
+- Procurar objetos importantes.
+- Evitar perigos.
+- Perseguir ou fugir de adversários conforme a situação.
+- Utilizar poderes de maneira estratégica.
+- Reagir a empurrões e colisões.
+- Tomar decisões diferentes conforme sua personalidade.
+
+As personalidades devem influenciar o comportamento.
+
+Exemplos:
+
+- Amarelo procura oportunidades de movimentação rápida.
+- Azul prioriza vencer e utiliza congelamento.
+- Laranja tende a evitar perigos e utilizar esquivas.
+- Vermelho pode adotar uma postura mais agressiva.
+- Roxo utiliza telecinese quando houver oportunidades.
+
+A IA deve ser capaz de competir contra outros personagens sem depender de comandos humanos.
+
+12. VISUAL, ANIMAÇÕES E ÁUDIO
+
+- Preservar a identidade visual original.
+- Utilizar os SVGs existentes.
+- Criar animações suaves de movimentação.
+- Criar efeitos visuais para poderes, colisões e eliminações.
+- Criar efeitos sonoros apropriados.
+- Implementar música durante as partidas.
+- A música deve parar e voltar nos momentos corretos da Dança das Cadeiras.
+- Preparar suporte para a trilha sonora própria do projeto quando os arquivos estiverem disponíveis.
+
+Não inventar expressões faciais que contradigam o visual oficial.
+
+13. LORE E ELEMENTOS DE MISTÉRIO
+
+A série possui uma história de mistério envolvendo falhas da simulação e uma dimensão 3D chamada Little Guys League 64.
+
+Entretanto, a primeira versão deve priorizar a experiência de jogo 2D.
+
+Não transformar o jogo inteiro em terror.
+Não criar uma dimensão 3D jogável agora.
+Deixar a arquitetura preparada para futuras expansões de história, replays especiais e acontecimentos estranhos.
+
+14. INTERFACE
+
+Criar:
+
+- Tela inicial.
+- Seleção de modo de participantes.
+- Seleção de modalidade.
+- Seleção de variações especiais.
+- Tela de partida.
+- Placar.
+- Tela de resultado.
+- Sistema para iniciar outra partida.
+
+A interface deve ser simples, organizada e combinar com a identidade visual do Little Guys League.
+
+15. QUALIDADE E IMPLEMENTAÇÃO
+
+Requisitos obrigatórios:
+
+- Código organizado e modular.
+- Sistemas reutilizáveis entre modalidades.
+- Não duplicar desnecessariamente sistemas de física, colisão e pontuação.
+- Não deixar botões sem funcionalidade.
+- Não simular mecânicas que deveriam funcionar de verdade.
+- Não deixar personagens atravessarem paredes ou objetos indevidamente.
+- Evitar bugs quando vários poderes forem utilizados ao mesmo tempo.
+- Garantir que as partidas terminem corretamente.
+- Garantir que os resultados sejam registrados.
+- Testar os três modos de participantes.
+- Testar as sete modalidades.
+- Testar os poderes individualmente e em conjunto.
+- Corrigir erros encontrados.
+
+16. FORMA DE TRABALHO
+
+Desenvolva o projeto por etapas:
+
+1. Análise e organização dos arquivos.
+2. Estrutura principal e tela inicial.
+3. Personagens, movimentação e física.
+4. Inteligência artificial.
+5. Modos de participantes.
+6. Sistemas compartilhados das modalidades.
+7. Implementação das sete modalidades.
+8. Poderes e variações especiais.
+9. Árbitro, temporadas, replays e pontuação.
+10. Interface, animações e áudio.
+11. Testes gerais e correção de bugs.
+
+Não pare depois de criar a estrutura inicial. Continue implementando as etapas até ter uma versão jogável.
+
+Se uma etapa for grande demais, divida em tarefas menores e continue trabalhando.
+
+Ao terminar cada etapa, informe:
+
+- O que foi implementado.
+- Quais arquivos foram criados ou modificados.
+- O que já funciona.
+- O que ainda falta.
+- Quais testes foram realizados.
+
+OBJETIVO FINAL
+
+Entregar uma primeira versão funcional do Little Guys League para navegador, com sete personagens, inteligência artificial, partidas com até sete competidores, três modos de participantes, sete modalidades, poderes, variações especiais e sistema de pontuação.
+
+Priorize a fidelidade ao universo original e a qualidade da jogabilidade.
+
+Não transforme o projeto em outro jogo. O objetivo é desenvolver Little Guys League.
