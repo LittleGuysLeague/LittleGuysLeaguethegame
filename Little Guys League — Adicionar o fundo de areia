@@ -1,0 +1,91 @@
+Objetivo
+
+Substituir o fundo roxo/preto da arena por uma textura de areia, sem alterar as mecânicas, personagens ou modalidades do jogo.
+
+1. Arquivo necessário
+
+O PNG já está na raiz do repositório, junto do "index.html":
+
+"areia-tile-2048x1536.png"
+
+Não renomeie nem mova esse arquivo.
+
+2. Criar o carregamento da textura
+
+No início do JavaScript, localize:
+
+const canvas=document.getElementById('game');
+const ctx=canvas.getContext('2d');
+let W=0,H=0,DPR=1,perf=0;
+
+Logo abaixo, adicione:
+
+const arenaTexture=new Image();
+let arenaPattern=null;
+
+arenaTexture.onload=()=>{
+  const tile=document.createElement('canvas');
+  tile.width=512;
+  tile.height=384;
+
+  const tileCtx=tile.getContext('2d');
+  tileCtx.drawImage(arenaTexture,0,0,tile.width,tile.height);
+
+  arenaPattern=ctx.createPattern(tile,'repeat');
+};
+
+arenaTexture.src='areia-tile-2048x1536.png';
+
+3. Substituir a função do cenário
+
+Procure a função:
+
+function drawArenaBg()
+
+Substitua a função inteira por:
+
+function drawArenaBg(){
+  const a=arena();
+
+  ctx.save();
+  rr(ctx,a.x,a.y,a.w,a.h,18);
+  ctx.clip();
+
+  if(arenaPattern){
+    ctx.fillStyle=arenaPattern;
+    ctx.fillRect(a.x,a.y,a.w,a.h);
+  }else{
+    ctx.fillStyle='#cdb58b';
+    ctx.fillRect(a.x,a.y,a.w,a.h);
+  }
+
+  ctx.restore();
+
+  // Mantém o círculo decorativo original
+  ctx.save();
+  ctx.strokeStyle='rgba(255,255,255,0.06)';
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.arc(cx(),cy(),Math.min(a.w,a.h)*0.32,0,6.28);
+  ctx.stroke();
+  ctx.restore();
+}
+
+4. Resultado esperado
+
+- A arena passa a ter chão de areia.
+- A textura se repete automaticamente.
+- Cada repetição mede 512 × 384 pixels.
+- Os cantos arredondados continuam funcionando.
+- O círculo decorativo permanece.
+- Personagens, cones, modalidades e demais elementos não devem ser modificados.
+
+5. Antes de salvar
+
+1. Faça uma cópia de segurança do "index.html".
+2. Confira se o nome do PNG está exatamente igual.
+3. Salve o arquivo.
+4. Abra o jogo e teste uma partida.
+5. Confira se a textura aparece corretamente e não fica esticada.
+
+Importante: não substitua o projeto inteiro e não altere outras funções. Essa mudança deve ficar limitada ao carregamento da imagem e à função "drawArenaBg()".
